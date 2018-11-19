@@ -9,8 +9,7 @@ function MediaReport{
     Get-ChildItem -Recurse -Path "$PSScriptRoot" | Unblock-File
 
     #Import modules with needed functions to generate report
-    Import-Module "$PSScriptRoot/Selenium/PowerShellSelenium.psm1"
-    ."$PSScriptRoot/SetUp.ps1"
+    Import-Module "$home\Desktop\AccessibilityTools\PowerShell\Modules\SeleniumTest\PowerShellSelenium.psm1"    ."$PSScriptRoot/SetUp.ps1"
     ."$PSScriptRoot/PoshCanvas.ps1"
     ."$PSScriptRoot/MediaExcel.ps1"
     ."$PSScriptRoot/SearchCourse.ps1"
