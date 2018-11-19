@@ -37,9 +37,7 @@ function Set-BrightcoveCredentials
         #Let them know that a fatal error occured
         Write-Host "Your password and username files at $PSScriptRoot\Passwords threw an error, they may be empty, please delete them and run the program again" -ForegroundColor Red
         #Force them to close program
-        while ($true) {
-            Read-Host "Please close the program"
-        }
+        Read-Host "If you do not want to check brightcove videos, you can probably continue without issue, but if not please close the program now. It will still attempt to log into brightcove (it will throw some errors) but should work for everything else"
     }
 }
 
