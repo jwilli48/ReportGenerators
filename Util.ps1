@@ -45,6 +45,7 @@ function Get-TranscriptAvailable {
     else {
         return "No"
     }
+    return "No"
 }
 
 function Send-EndNotification {
