@@ -1,5 +1,22 @@
-# Canvas Report Generator
+# Report Generator
 This program is now able to run on a directory of HTML files and allows you to enter either a Canvas course ID or a directory path
+
+## NOTE
+
+This is a refactored version of my CanvasReport repository and there are some steps needed to get it working.
+1. Make a directory on your desktop called AccessibilityTools
+2. Download my SeleniumPSWrapper repository and make sure it is this exact file path: C:\Users\UserName\Desktop\AccessibilityTools\PowerShell\Modules\SeleniumTest
+	-There should be no other directories inside of there and you can just copy all of the files inside the SeleniumPSWrapper-master directory you downloaded into that filepath
+3. Download this repositoy and place it right inside the AccessibilityTools directory
+
+Files should look something like this:
+
+* Desktop
+	* AccessibilityTools
+		* PowerShell
+			* Modules
+				* SeleniumTest
+		* ReportGenerator-master
 
 ## DEPENDANCIES
 They will be automatically installed when first running the program.
