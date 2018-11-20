@@ -18,6 +18,8 @@ Files should look something like this:
 				* SeleniumTest
 		* ReportGenerator-master
 
+This is mostly needed to get the MediaReport.exe working and the RunAllReports.exe working. If you only want a link report or an accessibility report, those should work right out of the box.
+
 ## DEPENDANCIES
 They will be automatically installed when first running the program.
 1. ImportExcel Module (For creating and formatting the Excel document generated)
