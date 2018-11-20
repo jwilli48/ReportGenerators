@@ -24,7 +24,7 @@ function ConvertTo-A11yExcel {
             #Parse through all possible issues to correctly input it into the template
             switch ($data[$i].Accessibility) 
             {
-                "Needs a title attribute" 
+                "Needs a title" 
                 {
                     Add-ToCell "Semantics" `
                                "Missing title/label" `
