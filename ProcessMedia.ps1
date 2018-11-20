@@ -161,6 +161,13 @@ function Start-ProcessLinks
                 $element = "ByuMediasite Link"
                 break
             }
+            "panopto"
+            {
+                $video_id = ($href -split "id=")[-1]
+                $video_legnth = (Get-PanoptoVideoLength $video_id)
+                $transcript = "N\A"
+                $element = "Panopto Link"
+            }
             default
             {
                 $skip = $true
