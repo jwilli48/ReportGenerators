@@ -11,19 +11,16 @@ if (Test-Path "$HOME\Documents\CanvasApiCreds.json")
         "https://byu.instructure.com" 
         {
             Copy-Item -Path "$HOME\Documents\CanvasApiCreds.json" -Destination "$HOME\Documents\BYU_CanvasApiCreds.json" -Force
-            $Global:ReportType = "Canvas"
             break
         }
         "https://byuistest.instructure.com" 
         {
             Copy-Item -Path "$HOME\Documents\CanvasApiCreds.json" -Destination "$HOME\Documents\TEST_CanvasApiCreds.json" -Force
-            $Global:ReportType = "CanvasTest"
             break
         }
         "https://byuismastercourses.instructure.com" 
         {
             Copy-Item -Path "$HOME\Documents\CanvasApiCreds.json" -Destination "$HOME\Documents\MASTER_CanvasApiCreds.json" -Force
-            $Global:ReportType = "CanvasMasterCourses"
             break
         }
         default 
@@ -41,6 +38,7 @@ switch ($domain)
         if (Test-Path "$HOME\Documents\BYU_CanvasApiCreds.json") 
         {
             Copy-Item -Path "$HOME\Documents\BYU_CanvasApiCreds.json" -Destination "$HOME\Documents\CanvasApiCreds.json" -Force
+            $Global:ReportType = "Canvas"
         }
         else {
             Write-Host "You will need to create a Canvas API for this domain."
@@ -50,6 +48,7 @@ switch ($domain)
         if (Test-Path "$HOME\Documents\TEST_CanvasApiCreds.json") 
         {
             Copy-Item -Path "$HOME\Documents\TEST_CanvasApiCreds.json" -Destination "$HOME\Documents\CanvasApiCreds.json" -Force
+            $Global:ReportType = "CanvasTest"
         }
         else {
             Write-Host "You will need to create a Canvas API for this domain."
@@ -59,6 +58,7 @@ switch ($domain)
         if (Test-Path "$HOME\Documents\MASTER_CanvasApiCreds.json") 
         {
             Copy-Item -Path "$HOME\Documents\MASTER_CanvasApiCreds.json" -Destination "$HOME\Documents\CanvasApiCreds.json" -Force
+            $Global:ReportType = "CanvasMasterCourses"
         }
         else 
         {
