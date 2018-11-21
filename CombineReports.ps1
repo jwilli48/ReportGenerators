@@ -1,7 +1,8 @@
 function CombineReports {
     param (
         $course_id,
-        $domain
+        $domain,
+        $timer
     )
     ."$PSScriptRoot/PoshCanvas.ps1"
     if($domain -eq 4)
@@ -107,4 +108,18 @@ function CombineReports {
     Close-ExcelPackage $excel
 
     Rename-Item -Path $main_excel_path -NewName $FinalReportPath
+
+    $Timer.Stop()
+
+    $ButtonContent = @{
+        Content   = "Open Report"
+        Arguments = $FinalReportPath
+    }
+    $Button = New-BTButton @ButtonContent
+
+    $NotificationContent = @{
+        Text   = "Report for $courseName Generated", "Time taken: $($Timer.Elapsed.ToString('hh\:mm\:ss'))"
+        Button = $Button
+    }
+    New-BurntToastNotification @NotificationContent
 }

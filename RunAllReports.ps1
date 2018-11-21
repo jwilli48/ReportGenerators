@@ -27,18 +27,4 @@ if (4 -eq $domain)
 
 ."$ScriptPath/CombineReports.ps1"
 
-CombineReports -course_id $course_id -domain $domain
-
-$Timer.Stop()
-
-$ButtonContent = @{
-    Content   = "Open Report"
-    Arguments = $ExcelReport
-}
-$Button = New-BTButton @ButtonContent
-
-$NotificationContent = @{
-    Text   = "Report for $courseName Generated", "Time taken: $($Timer.Elapsed.ToString('hh\:mm\:ss'))"
-    Button = $Button
-}
-New-BurntToastNotification @NotificationContent
+CombineReports -course_id $course_id -domain $domain -timer $Timer
