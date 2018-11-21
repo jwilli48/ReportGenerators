@@ -92,5 +92,19 @@ function CombineReports {
             $i++
         }
     }
+
+    #Touch up the document
+    $excel = Export-Excel $main_excel_path -PassThru
+    #Format the conditional coloring as it gets messed up with the conversion for some reason
+    $excel.Workbook.Worksheets[1].ConditionalFormatting[0].LowValue.Color = [System.Drawing.Color]::FromArgb(255, 146, 208, 80)
+    $excel.Workbook.Worksheets[1].ConditionalFormatting[0].MiddleValue.Color = [System.Drawing.Color]::FromArgb(255, 255, 213, 5)
+    $excel.Workbook.Worksheets[1].ConditionalFormatting[0].HighValue.Color = [System.Drawing.Color]::FromArgb(255, 255, 71, 71)
+    $excel.Workbook.Worksheets[1].ConditionalFormatting[1].LowValue.Color = [System.Drawing.Color]::FromArgb(255, 146, 208, 80)
+    $excel.Workbook.Worksheets[1].ConditionalFormatting[1].MiddleValue.Color = [System.Drawing.Color]::FromArgb(255, 255, 213, 5)
+    $excel.Workbook.Worksheets[1].ConditionalFormatting[1].HighValue.Color = [System.Drawing.Color]::FromArgb(255, 255, 71, 71)
+    #Set the date format for a specific cell
+    Set-Format -WorkSheet $excel.Workbook.Worksheets[1] -Range "E6:E6" -NumberFormat 'Short Date'
+    Close-ExcelPackage $excel
+
     Rename-Item -Path $main_excel_path -NewName $FinalReportPath
 }
