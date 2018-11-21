@@ -55,8 +55,8 @@ function ConvertTo-A11yExcel {
                 "JavaScript links are not accessible" 
                 {
                     Add-ToCell "Link" `
-                               "" `
-                               ("{0}`n{1}" -f $data[$i].Text, $data[$i].Accessibility) `
+                               "JavaScript Link" `
+                               ("{0}`n{1}" -f $data[$i].Text) `
                                3 3 3
                     break
                 }
