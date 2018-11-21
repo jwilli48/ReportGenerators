@@ -132,21 +132,21 @@ function ConvertTo-A11yExcel {
             $row++
         }
 
-        #Format the conditional coloring as it gets messed up with the conversion for some reason
-        $template.Workbook.Worksheets[1].ConditionalFormatting[0].LowValue.Color = [System.Drawing.Color]::FromArgb(255, 146, 208, 80)
-        $template.Workbook.Worksheets[1].ConditionalFormatting[0].MiddleValue.Color = [System.Drawing.Color]::FromArgb(255, 255, 213, 5)
-        $template.Workbook.Worksheets[1].ConditionalFormatting[0].HighValue.Color = [System.Drawing.Color]::FromArgb(255, 255, 71, 71)
-        $template.Workbook.Worksheets[1].ConditionalFormatting[1].LowValue.Color = [System.Drawing.Color]::FromArgb(255, 146, 208, 80)
-        $template.Workbook.Worksheets[1].ConditionalFormatting[1].MiddleValue.Color = [System.Drawing.Color]::FromArgb(255, 255, 213, 5)
-        $template.Workbook.Worksheets[1].ConditionalFormatting[1].HighValue.Color = [System.Drawing.Color]::FromArgb(255, 255, 71, 71)
-        #Set the date format for a specific cell
-        Set-Format -WorkSheet $template.Workbook.Worksheets[1] -Range "E6:E6" -NumberFormat 'Short Date'
     }
     catch
     {
         #Print out error message if it fails
         Write-Host "Error formatting excel to template, attemping to save it as is: ErrorMessage:`n$_" -ForegroundColor Red
     }
+    #Format the conditional coloring as it gets messed up with the conversion for some reason
+    $template.Workbook.Worksheets[1].ConditionalFormatting[0].LowValue.Color = [System.Drawing.Color]::FromArgb(255, 146, 208, 80)
+    $template.Workbook.Worksheets[1].ConditionalFormatting[0].MiddleValue.Color = [System.Drawing.Color]::FromArgb(255, 255, 213, 5)
+    $template.Workbook.Worksheets[1].ConditionalFormatting[0].HighValue.Color = [System.Drawing.Color]::FromArgb(255, 255, 71, 71)
+    $template.Workbook.Worksheets[1].ConditionalFormatting[1].LowValue.Color = [System.Drawing.Color]::FromArgb(255, 146, 208, 80)
+    $template.Workbook.Worksheets[1].ConditionalFormatting[1].MiddleValue.Color = [System.Drawing.Color]::FromArgb(255, 255, 213, 5)
+    $template.Workbook.Worksheets[1].ConditionalFormatting[1].HighValue.Color = [System.Drawing.Color]::FromArgb(255, 255, 71, 71)
+    #Set the date format for a specific cell
+    Set-Format -WorkSheet $template.Workbook.Worksheets[1] -Range "E6:E6" -NumberFormat 'Short Date'
     #Attempt to save
     try
     {

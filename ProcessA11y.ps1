@@ -735,7 +735,7 @@ function Start-ProcessColor
         if ($color.Color -notmatch "#") 
         {
             #If it is not then convert the color to hexadecimal based on RGB values
-            $convert = @([System.drawing.Color]::($color.Color).R, [System.drawing.Color]::($color.Color).G, [System.drawing.Color]::($color.Color).B)
+            $convert = @([System.Drawing.Color]::($color.Color).R, [System.Drawing.Color]::($color.Color).G, [System.Drawing.Color]::($color.Color).B)
             #Short code to convert the three RBG values from the above array into a hexadecimal format
             $color.Color = '#' + -join (0..2| % {"{0:X2}" -f + ($convert[$_])})
         }
@@ -743,7 +743,7 @@ function Start-ProcessColor
         #Do the same for the background color
         if ($color.BackgroundColor -notmatch "#") 
         {
-            $convert = @([System.drawing.Color]::($color.BackgroundColor).R, [System.drawing.Color]::($color.BackgroundColor).G, [System.drawing.Color]::($color.BackgroundColor).B)
+            $convert = @([System.Drawing.Color]::($color.BackgroundColor).R, [System.Drawing.Color]::($color.BackgroundColor).G, [System.Drawing.Color]::($color.BackgroundColor).B)
             $color.BackgroundColor = '#' + -join (0..2| % {"{0:X2}" -f + ($convert[$_])})
         }
 
