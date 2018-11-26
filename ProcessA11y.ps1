@@ -526,7 +526,7 @@ function Start-ProcessTables
                                 if ($check[$i - 1] -match "<tr" -and $check[$i + 1] -match "</tr") 
                                 {
                                     #If it is then suggest that it become a title for the table instead of a streched cell
-                                    $issueList += "Stretched cell(s) should possibly be a <caption> title for the table"
+                                    $issueList += "Stretched cell(s) should be a <caption> title for the table"
                                 }
                                 break
                             }
@@ -538,7 +538,7 @@ function Start-ProcessTables
                                 #See if it as a scope tag, if not add to issue list
                                 if ($check[$i] -notmatch "scope") 
                                 {
-                                    $issueList += "Table headers should have either scope=`"row`" or scope=`"col`" for screenreaders"
+                                    $issueList += "Table headers should have a scope attribute"
                                 }
                                 #Add to number of columns
                                 $columnNumber++
