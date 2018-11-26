@@ -70,7 +70,7 @@ function Search-CanvasCourse
             }
             else {
                 #if its not any of the above just skip it as it is not yet supported
-                Write-Host "Not Supported:`n$item " -ForegroundColor Red
+                Write-Host "Not Supported:`n$item " -ForegroundColor Yellow
                 continue
             }
 
