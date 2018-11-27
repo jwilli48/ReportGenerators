@@ -112,6 +112,7 @@ function Start-ProcessLinks
                 {
                     #Try to make sure everything on the ID is removed besides the ID itself
                     $video_id = $video_id.split("?")[0]
+                    $video_id = $video_id.split("/")[-1]
                     #Try to get the video length 
                     $video_length = [timespan]::FromSeconds((Get-GoogleVideoSeconds -VideoID $video_id)).toString("hh\:mm\:ss")
                 }
