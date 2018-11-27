@@ -167,6 +167,16 @@ function Start-ProcessLinks
                 $video_legnth = (Get-PanoptoVideoLength $video_id)
                 $transcript = "N\A"
                 $element = "Panopto Link"
+                break
+            }
+            "bcove"
+            {
+                $chrome.Url = $href
+                $video_id = $chrome.url.split('=')[-1]
+                $video_length = (Get-BrightcoveVideoLength $video_id)
+                $transcript = ($transcript = Get-TranscriptAvailable $href)
+                $element = "Bcove Link"
+                break
             }
             default
             {
