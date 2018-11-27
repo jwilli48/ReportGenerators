@@ -20,6 +20,7 @@ function Get-BrightcoveVideoLength {
     param(
         [string]$videoID
     )
+    $videoID
     #Set automated browser to the URL that would find the video
     $chrome.url = ("https://studio.brightcove.com/products/videocloud/media/videos/search/" + $videoID)
     #See if the video exists

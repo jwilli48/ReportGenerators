@@ -173,6 +173,7 @@ function Start-ProcessLinks
             "bcove"
             {
                 $chrome.Url = $href
+                $null = Invoke-SeWaitUntil -DriverList $chrome -Condition ElementIsVisible -By CssSelector -Locator iframe
                 $video_id = $chrome.url.split('=')[-1]
                 $video_length = (Get-BrightcoveVideoLength $video_id)
                 $transcript = ($transcript = Get-TranscriptAvailable $href)
