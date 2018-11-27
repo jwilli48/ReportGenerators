@@ -44,7 +44,7 @@ function MediaReport{
     Write-Host -ForegroundColor Magenta "Starting automated Chrome Browser..."
 
     #Create new chrome driver, set URL and log into Brightcove
-    $Chrome = New-SeChrome -Headless -MuteAudio
+    $Chrome = New-SeChrome -MuteAudio
     Set-SeUrl -DriverList $Chrome -Url "https://signin.brightcove.com/login?redirect=https%3A%2F%2Fstudio.brightcove.com%2Fproducts%2Fvideocloud%2Fmedia"
     #Send username
     Invoke-SeWaitUntil -DriverList $Chrome -Condition ElementIsVisible -By CssSelector -Locator input[name*="email"] |
