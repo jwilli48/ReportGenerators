@@ -111,8 +111,6 @@ function Start-ProcessLinks
                 #Matches with the text if it is a single word, which would almost always be considered non-descriptive
                 if(($link_text -eq $text | Measure-Object).Count -gt 1)
                 {
-
-                }else{
                     break
                 }
             }
