@@ -113,6 +113,8 @@ function Start-ProcessLinks
                 {
                     break
                 }
+                $issue_found = $false
+                break
             }
             "^ ?here"
             {
