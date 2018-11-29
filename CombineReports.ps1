@@ -78,7 +78,7 @@ function CombineReports {
             Remove-Item $link_excel_path
         }
     }
-    $FinalReportPath = $main_excel_path -replace "A11yReport", "FinalReport"
+    $FinalReportPath = $main_excel_path -replace "A11yReport", "ARC"
     if (Test-Path $FinalReportPath) {
         #If it does append a (Copy) tag to the end of file path
         $i = 1
