@@ -225,6 +225,11 @@ function Start-ProcessImages
                     #should not be a link
                     break
                 }
+                "LaTeX:"
+                {
+                    #Should be normal english not latex in the alt text
+                    break
+                }
                 Default 
                 {
                     #if it reaches here then no issue found
