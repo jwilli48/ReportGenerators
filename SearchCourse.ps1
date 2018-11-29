@@ -47,32 +47,44 @@ function Search-CanvasCourse
         #loop through all module items
         foreach ($item in $module_items)
         {
-            #Figure out the type of the item so we can use correct search API command
-            if ($item.type -eq "Page") 
-            {
-                $page = Get-CanvasCoursesPagesByCourseIdAndUrl -CourseId $course_id -Url $item.page_url
-                $page_body = $page.body
+            #If anything throws an error then we don't have access
+            try{
+                #Figure out the type of the item so we can use correct search API command
+                if ($item.type -eq "Page") {
+                    $page = Get-CanvasCoursesPagesByCourseIdAndUrl -CourseId $course_id -Url $item.page_url
+                    $page_body = $page.body
+                }
+                elseif ($item.type -eq "Discussion") {
+                    $page = Get-CanvasCoursesDiscussionTopicsByCourseIdAndTopicId -CourseId $course_id -TopicId $item.content_id
+                    $page_body = $page.message
+                }
+                elseif ($item.type -eq "Assignment") {
+                    $page = Get-CanvasCoursesAssignmentsByCourseIdAndId -CourseId $course_id -Id $item.content_id
+                    $page_body = $page.description
+                }
+                elseif ($item.type -eq "Quiz") {
+                    $page = Get-CanvasQuizzesById -CourseId $course_id -Id $item.content_id
+                    $page_body = $page.description
+                }
+                else {
+                    #if its not any of the above just skip it as it is not yet supported
+                    Write-Host "Not Supported:`n$item " -ForegroundColor Yellow
+                    continue
+                }
+            }catch{
+               #Check if it was an unauthorized error
+                if($_ -match "Unauthorized")
+                {
+                    #Print nicer formatted error message
+                    Write-Host "ERROR: (401) Unauthorized, can not search:`n$item" -ForegroundColor Red
+                }
+                else
+                {
+                    #Unknown erorr, print whole thing out
+                    Write-Host $_ -ForegroundColor Red
+                }
             }
-            elseif ($item.type -eq "Discussion") 
-            {
-                $page = Get-CanvasCoursesDiscussionTopicsByCourseIdAndTopicId -CourseId $course_id -TopicId $item.content_id
-                $page_body = $page.message
-            }
-            elseif ($item.type -eq "Assignment") 
-            {
-                $page = Get-CanvasCoursesAssignmentsByCourseIdAndId -CourseId $course_id -Id $item.content_id
-                $page_body = $page.description
-            }
-            elseif ($item.type -eq "Quiz") 
-            {
-                $page = Get-CanvasQuizzesById -CourseId $course_id -Id $item.content_id
-                $page_body = $page.description
-            }
-            else {
-                #if its not any of the above just skip it as it is not yet supported
-                Write-Host "Not Supported:`n$item " -ForegroundColor Yellow
-                continue
-            }
+            
 
             #Print name of item
             Write-Host $item.title -ForegroundColor Green
