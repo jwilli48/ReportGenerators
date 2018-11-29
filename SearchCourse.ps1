@@ -6,6 +6,8 @@ function Search-CanvasCourse
         [int]$course_id,
         $type
     )
+    #This is a global variable we need to make sure is set to null before requesting info from a course
+    $global:CanvasApiTokenInfo = $Null
     #Get the course name and fix it so it won't throw errors later on
     $course_name = (Get-CanvasCoursesById -Id $course_id).course_code
     $course_name = $course_name -replace [regex]::escape('+'), ' ' -replace ':', ''
