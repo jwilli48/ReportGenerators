@@ -168,7 +168,7 @@ function Start-ProcessImages
 {
     #Get list of images
     $image_list = $page_body | 
-                    Select-String -pattern '<img.*?>' -AllMatches | 
+                    Select-String -pattern '<img[\s\S]*?>' -AllMatches | 
                     ForEach-Object {$_.Matches.Value}
 
     #loop through all of the iamges to check alt text
