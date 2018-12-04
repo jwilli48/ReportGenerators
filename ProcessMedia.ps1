@@ -82,7 +82,7 @@ function Start-ProcessLinks
         #Variable to mark if the video was found or not
         $Global:video_not_found = ""
         #Get the text for corresponding link
-        $text = ($link_list -match $href) | 
+        $text = ($link_list -match [regex]::Escape($href)) | 
                 Select-String -pattern "<a.*?>(.*?)</a>" -AllMatches | 
                 ForEach-Object {$_.Matches.Groups[1].Value}
         $skip = $false
