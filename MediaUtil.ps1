@@ -77,7 +77,6 @@ function Get-PanoptoVideoLength {
     )
     #Set URL
     $chrome.url = "https://byu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=$videoID&amp;v=1"
-    Invoke-SeWaitUntil -DriverList $chrome -Condition ElementIsVisible -By CssSelector -Locator body
     #Try to make sure the page is loaded
     while ($chrome.ExecuteScript("return document.readyState") -ne "complete") {}
     while ($chrome.ExecuteScript("return jQuery.active") -ne 0) {}
