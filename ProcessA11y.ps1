@@ -739,6 +739,11 @@ function Start-ProcessColor
                         {
                             $c.Color = "#000000"
                         }
+                        #Check to see if colors are the same, if so then it most likely grabbed the wrong colors. Just try one of them.
+                        if($c.Color -eq $c.BackgroundColor)
+                        {
+                            $c.BackgroundColor = "#FFFFFF"
+                        }
                         #Return the custom object
                         $c
                     }
