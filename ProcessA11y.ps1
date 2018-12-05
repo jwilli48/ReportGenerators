@@ -106,6 +106,10 @@ function Start-ProcessLinks
                 $text = "Invisible link with no text"
                 break
             }
+            "^ ?here" 
+            {
+                break
+            }
             "^ ?[A-Za-z\.]+ ?$"
             {
                 #Matches with the text if it is a single word, which would almost always be considered non-descriptive
@@ -114,10 +118,6 @@ function Start-ProcessLinks
                     break
                 }
                 $issue_found = $false
-                break
-            }
-            "^ ?here"
-            {
                 break
             }
             "Click"
