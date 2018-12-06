@@ -269,7 +269,8 @@ function Start-ProcessIframes
 
             #need to find simple defining aspect of iframe, first get the iframe source
             $url = $iframe | 
-                    Select-String -pattern 'src="(.*?)"' | ForEach-Object {$_.Matches.Groups[1].value}
+                    Select-String -pattern 'src="(.*?)"' | 
+                    ForEach-Object {$_.Matches.Groups[1].value}
             #Parse the URL to see what type of iframe it is
             #Switch sets the variables and flags that will then be added to the array after the switch is complete, to reduce repetetive code.
             switch ($url)
@@ -389,23 +390,22 @@ function Start-ProcessIframes
             }
             Add-ToArray $element $id "" $issue
         }
-
-        #Now we need to check if the video types have a transcipt or not
-        #var to count number of video
-        $i = 1
-        foreach ($iframe in $iframe_list)
+    }
+    #Now we need to check if the video types have a transcipt or not
+    #var to count number of video
+    $i = 1
+    foreach ($iframe in $iframe_list)
+    {
+        #See if it is any of the video types that would need a transcript
+        if($iframe -match "brightcove|byu\.mediasite|panopto|vimeo|dailymotion|facebook|ambrosevideo|kanopy|alexanderstreet")
         {
-            #See if it is any of the video types that would need a transcript
-            if($iframe -match "brightcove|byu\.mediasite|panopto|vimeo|dailymotion|facebook|ambrosevideo|kanopy|alexanderstreet")
+            #Check if it has a transcript or not
+            if((Get-TranscriptAvailable $iframe) -eq "No")
             {
-                #Check if it has a transcript or not
-                if((Get-TranscriptAvailable $iframe) -eq "No")
-                {
-                    Add-ToArray "Transcript" "" "Video number $i on page" "No transcript found"
-                }
+                Add-ToArray "Transcript" "" "Video number $i on page" "No transcript found"
             }
-            $i++
         }
+        $i++
     }
 }
 
