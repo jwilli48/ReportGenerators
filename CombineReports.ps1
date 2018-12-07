@@ -2,7 +2,7 @@ function CombineReports {
     param (
         $course_id,
         $domain,
-        $time
+        [timepsan]$time
     )
     ."$PSScriptRoot/PoshCanvas.ps1"
     if($domain -eq 4)
