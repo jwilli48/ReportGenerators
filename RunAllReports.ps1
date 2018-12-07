@@ -5,8 +5,8 @@ else {
     $ScriptPath = Split-Path -Parent -Path ([Environment]::GetCommandLineArgs()[0])
 }
 
-$Timer = [Diagnostics.StopWatch]::new()
-$Timer.Start()
+$TimerABC = [Diagnostics.StopWatch]::new()
+$TimerABC.Start()
 
 ."$ScriptPath/LinkReport.ps1"
 ."$ScriptPath/MediaReport.ps1"
@@ -30,4 +30,4 @@ if (4 -eq $domain)
 
 ."$ScriptPath/CombineReports.ps1"
 
-CombineReports -course_id $course_id -domain $domain -time $Timer.Stop().Elapsed
+CombineReports -course_id $course_id -domain $domain -time ($TimerABC.Stop().Elapsed)
