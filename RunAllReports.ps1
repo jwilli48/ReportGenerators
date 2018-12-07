@@ -30,4 +30,4 @@ if (4 -eq $domain)
 
 ."$ScriptPath/CombineReports.ps1"
 
-CombineReports -course_id $course_id -domain $domain -timer $Timer
+CombineReports -course_id $course_id -domain $domain -time $Timer.Stop().Elapsed

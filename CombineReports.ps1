@@ -2,7 +2,7 @@ function CombineReports {
     param (
         $course_id,
         $domain,
-        $timer
+        $time
     )
     ."$PSScriptRoot/PoshCanvas.ps1"
     if($domain -eq 4)
@@ -118,7 +118,7 @@ function CombineReports {
     $Button = New-BTButton @ButtonContent
 
     $NotificationContent = @{
-        Text   = "Report for $courseName Generated", "Time taken: $($Timer.Elapsed.ToString('hh\:mm\:ss'))"
+        Text   = "Report for $courseName Generated", "Time taken: $($time.ToString('hh\:mm\:ss'))"
         Button = $Button
     }
     New-BurntToastNotification @NotificationContent
