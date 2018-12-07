@@ -109,8 +109,6 @@ function CombineReports {
 
     Rename-Item -Path $main_excel_path -NewName $FinalReportPath
 
-    $Timer.Stop()
-
     $ButtonContent = @{
         Content   = "Open Report"
         Arguments = $FinalReportPath
