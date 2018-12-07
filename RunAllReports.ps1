@@ -29,5 +29,5 @@ if (4 -eq $domain)
 }
 
 ."$ScriptPath/CombineReports.ps1"
-
-CombineReports -course_id $course_id -domain $domain -time (($TimerABC.Stop()).Elapsed)
+$TimerABC.Stop()
+CombineReports -course_id $course_id -domain $domain -time ($TimerABC.Elapsed)
